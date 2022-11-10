@@ -1,0 +1,22 @@
+#Data collection when filer endpoint is used. In this way you are able to add keywords, userIDs and locations to search
+
+from tweepy import OAuthHandler
+from tweepy import API
+consumer_key= 7QYx97CYLi5FGgfqdtqVF9hMq
+consumer_secret= oKsnPVjyMB7t41F485ykygIARdK83pPnttfJVsTeFCO7w5xinz
+acces_token= 1444958072779288590-Vy9PjHzfNeN16u8McWIJsGfk2LxQhN
+acces_token_secret = 6s6GdikBh8LCC40YLyjrO6C5HVV5yy5kqJZKASRlZb1s4
+auth= 0AuthHanddler(consumer_key, consumer_secret)
+auth.set_acces_token(acces_token,acces_token_secret)
+api=API(auth)
+
+from tweepy import Stream
+keywords_to_track = ['#rstats', '#python']
+listen = Slistener(api)
+stream = Stream(auth,listen)
+stream.filter(track = keywords_to_track)
+
+#convert the twitter json output to csv and save files
+tweet, user= dl.to_dataframe(tweet_list)
+tweet.to_csv('output_path')
+user.to_csv('output_path')
