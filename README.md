@@ -19,4 +19,16 @@ tweet, user = dl.to_dataframe(tweet_list)
 tweet.to_csv('output_path')
 user.to_csv('output_path')
 ```
+## Twitter sentiment classifier 
+For the classification of the sentiment the collected tweets are containing, the 'vlaams-twitter-sentiment-model' of Statistics Flanders is used.
+```python
+from twitter_sentiment_classifier import batch_predict
 
+texts = [
+    'Ik haat u!',  # Negative
+    'Daar ben ik het mee eens',  # Neutral
+    'Ik hou van je!'  # Positive
+]
+
+batch_predict(texts)
+```
