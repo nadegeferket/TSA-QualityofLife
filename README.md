@@ -1,5 +1,5 @@
 # Twitter sentiment analysis 
-## Data Collection 
+## Data collection 
 The following code snippet allows you to collect your own dataset using the Full-Archive Search API of Twitter.
 ```python
 from utils.data_collection import DataLoader
@@ -19,7 +19,7 @@ tweet, user = dl.to_dataframe(tweet_list)
 tweet.to_csv('output_path')
 user.to_csv('output_path')
 ```
-## Twitter sentiment classifier 
+## Twitter sentiment classifier
 For the classification of the sentiment the collected tweets are containing, the 'vlaams-twitter-sentiment-model' of Statistics Flanders is used.
 ```python
 from twitter_sentiment_classifier import batch_predict
@@ -32,3 +32,6 @@ texts = [
 
 batch_predict(texts)
 ```
+## Measuring and Mitigating Biased Inferences of BERT-based model
+In order to do this, the code of the paper On Measuring and Mitigating Biased Inferences of Word Embeddings (Dev, Li, Phillips,
+& Srikumar, 2019) is used.
