@@ -35,3 +35,6 @@ batch_predict(texts)
 ## Measuring and Mitigating Biased Inferences of BERT-based model
 In order to do this, the code of the paper On Measuring and Mitigating Biased Inferences of Word Embeddings (Dev, Li, Phillips,
 & Srikumar, 2019) is used.
+
+## Subjective Well-Being
+Once the classification is done, QoL needs to be substracted from these findings. For this we follow the multiple papers Iacus wrote about QoL. His code, however, is in R rather than Python as the rest of the research is. 
