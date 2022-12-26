@@ -24,13 +24,15 @@ For the classification of the sentiment the collected tweets are containing, the
 ```python
 from twitter_sentiment_classifier import batch_predict
 
-texts = [
-    'Ik haat u!',  # Negative
-    'Daar ben ik het mee eens',  # Neutral
-    'Ik hou van je!'  # Positive
-]
-
-batch_predict(texts)
+import pandas
+colnames = [ c for c in "abcdefghujklmnopqrst"]
+data = pandas.read_csv('Downloads\\tweet_output_path2.csv', names=colnames) #geef eigen doc in
+texts = data.o.tolist()[1:]
+for i in range(0,len(texts)):
+    #preprocessing stap: vervangen van einde lijn naar spatie
+    texts[i] = texts[i].replace("\n"," ")
+    
+batch_predict(texts) 
 ```
 ## Measuring and Mitigating Biased Inferences of BERT-based model
 In order to do this, the code of the paper On Measuring and Mitigating Biased Inferences of Word Embeddings (Dev, Li, Phillips,
