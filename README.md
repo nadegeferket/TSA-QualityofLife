@@ -17,8 +17,8 @@ tweet_list = dl.retrieve_tweet(start_list=['2020-01-01T00:00:00.000Z','2020-02-0
 tweet, user = dl.to_dataframe(tweet_list)
 
 colnames = ["1","Antwerpen","Limburg","Oost_Vlaanderen","West_Vlaanderen","Vlaams_Brabant","Brussel"]
-namenPerProvincie = pandas.read_csv('provincies_officieel.csv', names=colnames) #geef eigen doc in
-stedenList = namenPerProvincie.Antwerpen.tolist()[1:]
+namenPerProvincie = pandas.read_csv('provincies_officieel.csv', names=colnames) 
+stedenList = namenPerProvincie.Antwerpen.tolist()[1:] #Geef provincie in
 
 rslt_df = tweet[tweet['location_geo'].isin(stedenList)]
 rslt_df.to_csv('tweet_output_path3.csv')
