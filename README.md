@@ -38,7 +38,11 @@ for i in range(0,len(texts)):
     #preprocessing stap: vervangen van einde lijn naar spatie
     texts[i] = texts[i].replace("\n"," ")
     
-batch_predict(texts) 
+output_df= batch_predict(texts) 
+df = pandas.DataFrame(output_df)
+writer = pandas.ExcelWriter('sentiment_dieet_Antw.xlsx', engine='xlsxwriter') #geef eigen doc in
+df.to_excel(writer, sheet_name='sentiment_tweets', index=False)
+writer.save()
 ```
 ## Measuring and Mitigating Biased Inferences of BERT-based model
 In order to do this, the code of the paper On Measuring and Mitigating Biased Inferences of Word Embeddings (Dev, Li, Phillips,
