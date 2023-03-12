@@ -1,6 +1,6 @@
 # Twitter sentiment analysis 
 ## Data collection 
-The following code snippet allows you to collect your own dataset per province and year using the Full-Archive Search API of Twitter.
+The following code snippet allows you to collect your own dataset per region and year using the Full-Archive Search API of Twitter.
 ```python
 import pandas
 dl = DataLoader(bearer_token)   
@@ -44,9 +44,9 @@ writer = pandas.ExcelWriter('sentiment_dieet_Antw.xlsx', engine='xlsxwriter') #g
 df.to_excel(writer, sheet_name='sentiment_tweets', index=False)
 writer.save()
 ```
-## Measuring and Mitigating Biased Inferences of BERT-based model
-In order to do this, the code of the paper On Measuring and Mitigating Biased Inferences of Word Embeddings (Dev, Li, Phillips,
-& Srikumar, 2019) is used.
 
 ## Subjective Well-Being
-Once the classification is done, QoL needs to be substracted from these findings. For this we follow the multiple papers Iacus wrote about QoL. His code, however, is in R rather than Python as the rest of the research is. 
+Once the classification is done, QoL needs to be substracted from these findings. For this we follow the multiple papers Iacus wrote about QoL. His code, however, is in R rather than Python as the rest of the research is. Therefore, notebooks are created based on the research of Iacus.
+
+## Mitigating migration bias
+In order to do this, Programatic Weak Supervision (PWS) is used to mitigate migration bias. Migration bias is specific to this research, because a person sending a message in Flanders is not necessarily Flemish, but the residence can be travel or work related. This bias occurs from location being a self-reported string.  
