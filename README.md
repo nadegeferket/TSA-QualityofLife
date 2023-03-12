@@ -49,4 +49,4 @@ writer.save()
 Once the classification is done, QoL needs to be substracted from these findings. For this we follow the multiple papers Iacus wrote about QoL. His code, however, is in R rather than Python as the rest of the research is. Therefore, notebooks are created based on the research of Iacus.
 
 ## Mitigating migration bias
-In order to do this, Programatic Weak Supervision (PWS) is used to mitigate migration bias. Migration bias is specific to this research, because a person sending a message in Flanders is not necessarily Flemish, but the residence can be travel or work related. This bias occurs from location being a self-reported string.  
+In order to do this, Programmatic Weak Supervision (PWS) is used to mitigate migration bias. Migration bias is specific to this research, because a person sending a message in Flanders is not necessarily Flemish, but the residence can be travel or work related. This bias occurs from location being a self-reported string.  
