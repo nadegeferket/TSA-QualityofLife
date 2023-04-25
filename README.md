@@ -77,7 +77,8 @@ df7 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment
 df8 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_veerkracht_Antw.xlsx')
 df9 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_vreugde_Antw.xlsx')
 df10 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_wanhoop_Antw.xlsx')
-
+```
+```python
 
 list0 = df.values.tolist()
 list1 = df1.values.tolist()
@@ -91,13 +92,13 @@ list8 = df8.values.tolist()
 list9 = df9.values.tolist()
 list10 = df10.values.tolist()
 listmax=list0+list1+list2+list3+list4+list5+list6+list7+list8+list9+list10
-
+```python
 out = []
 for sublist in listmax:
     out.extend(sublist)
     
 out
-
+```
 pos= out.count('POSITIVE')
 neg= out.count('NEGATIVE')
 neu= out.count('NEUTRAL')
@@ -106,6 +107,6 @@ percentpos= pos/len(out)
 percentneg= neg/len(out)
 
 SWBI= percentpos/(percentpos+percentneg)
-
+```
 ## Mitigating migration bias
 In order to do this, Programmatic Weak Supervision (PWS) is used to mitigate migration bias. Migration bias is specific to this research, because a person sending a message in Flanders is not necessarily Flemish, but the residence can be travel or work related. This bias occurs from location being a self-reported string.  
