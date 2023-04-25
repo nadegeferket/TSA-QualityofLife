@@ -41,7 +41,7 @@ for i in tqdm(range(0,len(steden_per_provincie))):
 
 ```
 ## Twitter sentiment classifier
-For the classification of the sentiment the collected tweets are containing, the 'vlaams-twitter-sentiment-model' of Statistics Flanders is used.
+For the classification of the sentiment the collected tweets are containing, the 'vlaams-twitter-sentiment-model' of Statistics Flanders is used. Small steps of pre-processing of the Tweets are added in order to eliminate errors in the process. 
 ```python
 
 from twitter_sentiment_classifier import batch_predict
@@ -60,7 +60,51 @@ batch_predict(lijst)
 ```
 
 ## Subjective Well-Being
-Once the classification is done, QoL needs to be substracted from these findings. For this we follow the multiple papers Iacus wrote about QoL. His code, however, is in R rather than Python as the rest of the research is. Therefore, notebooks are created based on the research of Iacus.
+Once the classification is done, QoL needs to be substracted from these findings. For this we follow the multiple papers Iacus wrote about QoL. His code, however, is in R rather than Python as the rest of the research is. Therefore, notebooks are created based on the research of Iacus. 
+
+#All sentiments of one region and domain is being merged and used in a calculation in order to derive the SWB index, for example, for the region Antwerp and the subdomain Emotional well-being:
+
+import pandas as pd
+
+df = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_depressie_Antw.xlsx')
+df1 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_droevig_Antw.xlsx')
+df2 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_eenzaam_Antw.xlsx')
+df3 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_gelukkig_Antw.xlsx')
+df4 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_gevoelens_Antw.xlsx')
+df5 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_hoopvol_Antw.xlsx')
+df6 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_somber_Antw.xlsx')
+df7 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_tevreden_Antw.xlsx')
+df8 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_veerkracht_Antw.xlsx')
+df9 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_vreugde_Antw.xlsx')
+df10 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_wanhoop_Antw.xlsx')
+
+list0 = df.values.tolist()
+list1 = df1.values.tolist()
+list2 = df2.values.tolist()
+list3 = df3.values.tolist()
+list4 = df4.values.tolist()
+list5 = df5.values.tolist()
+list6 = df6.values.tolist()
+list7 = df7.values.tolist()
+list8 = df8.values.tolist()
+list9 = df9.values.tolist()
+list10 = df10.values.tolist()
+listmax=list0+list1+list2+list3+list4+list5+list6+list7+list8+list9+list10
+
+out = []
+for sublist in listmax:
+    out.extend(sublist)
+    
+out
+
+pos= out.count('POSITIVE')
+neg= out.count('NEGATIVE')
+neu= out.count('NEUTRAL')
+
+percentpos= pos/len(out)
+percentneg= neg/len(out)
+
+SWBI= percentpos/(percentpos+percentneg)
 
 ## Mitigating migration bias
 In order to do this, Programmatic Weak Supervision (PWS) is used to mitigate migration bias. Migration bias is specific to this research, because a person sending a message in Flanders is not necessarily Flemish, but the residence can be travel or work related. This bias occurs from location being a self-reported string.  
