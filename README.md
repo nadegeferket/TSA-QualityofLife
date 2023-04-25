@@ -78,7 +78,7 @@ df8 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment
 df9 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_vreugde_Antw.xlsx')
 df10 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_wanhoop_Antw.xlsx')
 
-```python
+
 list0 = df.values.tolist()
 list1 = df1.values.tolist()
 list2 = df2.values.tolist()
@@ -92,7 +92,6 @@ list9 = df9.values.tolist()
 list10 = df10.values.tolist()
 listmax=list0+list1+list2+list3+list4+list5+list6+list7+list8+list9+list10
 
-```python
 out = []
 for sublist in listmax:
     out.extend(sublist)
