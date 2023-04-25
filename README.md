@@ -99,8 +99,7 @@ for sublist in listmax:
     out.extend(sublist)
     
 out
-```
-```python
+
 pos= out.count('POSITIVE')
 neg= out.count('NEGATIVE')
 neu= out.count('NEUTRAL')
