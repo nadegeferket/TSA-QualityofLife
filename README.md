@@ -1,4 +1,4 @@
-# Twitter sentiment analysis 
+# Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data
 ## Data collection 
 The following code snippet allows you to collect your own dataset per region and year using the Full-Archive Search API of Twitter.
 ```python
