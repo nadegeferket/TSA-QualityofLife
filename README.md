@@ -111,7 +111,7 @@ SWBI= percentpos/(percentpos+percentneg)
 ```
 ## Mitigating migration bias
 Migration bias is specific to this research, because a person sending a message in Flanders is not necessarily Flemish, but the residence can be travel or work related. This bias occurs from location being a self-reported string. In order to investigate this bias, the modal tweet method is used. The location history of a set of 442 users is extracted and examined. These users are then categorized in 5 different types: students, commuters, beach-visitors, foreigners and non-classified. The following code retrieves the location history of a given user and divides the years 2014-2018 into 20 different pieces, with time intervals of 3 months
-
+```python
 from datetime import datetime
 dl = DataLoader(bearer_token)   
 
