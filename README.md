@@ -30,7 +30,7 @@ tweet, user = dl.to_dataframe(tweet_list)
 tweet.to_csv('tweet_info2017mindfulness.csv')
 user.to_csv('user_info2017mindfulness.csv')
 
-#Divide the data into 5 different files according to Flemish region 
+#Divide the data into 5 different files according to Flemish region and all of its subregions in the Flemish_regions file (French equivalents also added)
 
 df_provincie = pd.read_csv("Flemish_regions.csv")
 provincieNamen = ["Limburg","Antwerpen","Vlaams_Brabant","West_Vlaanderen","Oost_Vlaanderen"]
@@ -43,21 +43,20 @@ for i in tqdm(range(0,len(steden_per_provincie))):
 ## Twitter sentiment classifier
 For the classification of the sentiment the collected tweets are containing, the 'vlaams-twitter-sentiment-model' of Statistics Flanders is used.
 ```python
+
 from twitter_sentiment_classifier import batch_predict
 
 import pandas
-colnames = [ c for c in "abcdefghujklmnopqrst"]
-data = pandas.read_csv('Downloads\\tweet_output_path2.csv', names=colnames) #geef eigen doc in
-texts = data.o.tolist()[1:]
+data = pandas.read_csv('Downloads\\tweet_per_provincie_welvarendOost_Vlaanderen.csv') #geef eigen doc in
+texts = data['text']
+lijst = list(texts)
 for i in range(0,len(texts)):
     #preprocessing stap: vervangen van einde lijn naar spatie
-    texts[i] = texts[i].replace("\n"," ")
+    lijst[i] = lijst[i].replace("\n"," ")
+    lijst[i] = lijst[i].replace("\t"," ")
+    lijst[i] = lijst[i].replace("\r"," ")
     
-output_df= batch_predict(texts) 
-df = pandas.DataFrame(output_df)
-writer = pandas.ExcelWriter('sentiment_dieet_Antw.xlsx', engine='xlsxwriter') #geef eigen doc in
-df.to_excel(writer, sheet_name='sentiment_tweets', index=False)
-writer.save()
+batch_predict(lijst) 
 ```
 
 ## Subjective Well-Being
