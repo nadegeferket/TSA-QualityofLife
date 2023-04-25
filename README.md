@@ -92,6 +92,7 @@ list8 = df8.values.tolist()
 list9 = df9.values.tolist()
 list10 = df10.values.tolist()
 listmax=list0+list1+list2+list3+list4+list5+list6+list7+list8+list9+list10
+```
 ```python
 out = []
 for sublist in listmax:
@@ -99,6 +100,7 @@ for sublist in listmax:
     
 out
 ```
+```python
 pos= out.count('POSITIVE')
 neg= out.count('NEGATIVE')
 neu= out.count('NEUTRAL')
