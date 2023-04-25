@@ -63,7 +63,7 @@ batch_predict(lijst)
 Once the classification is done, QoL needs to be substracted from these findings. For this we follow the multiple papers Iacus wrote about QoL. His code, however, is in R rather than Python as the rest of the research is. Therefore, notebooks are created based on the research of Iacus. 
 
 #All sentiments of one region and domain is being merged and used in a calculation in order to derive the SWB index, for example, for the region Antwerp and the subdomain Emotional well-being:
-
+```python
 import pandas as pd
 
 df = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_depressie_Antw.xlsx')
@@ -78,6 +78,7 @@ df8 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment
 df9 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_vreugde_Antw.xlsx')
 df10 = pd.read_excel(r'C:\Users\vrank\emotionalwellbeing_Antwerpen_2018\sentiment\sentiment_wanhoop_Antw.xlsx')
 
+```python
 list0 = df.values.tolist()
 list1 = df1.values.tolist()
 list2 = df2.values.tolist()
@@ -91,6 +92,7 @@ list9 = df9.values.tolist()
 list10 = df10.values.tolist()
 listmax=list0+list1+list2+list3+list4+list5+list6+list7+list8+list9+list10
 
+```python
 out = []
 for sublist in listmax:
     out.extend(sublist)
