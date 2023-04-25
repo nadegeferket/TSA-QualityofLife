@@ -110,4 +110,138 @@ percentneg= neg/len(out)
 SWBI= percentpos/(percentpos+percentneg)
 ```
 ## Mitigating migration bias
-In order to do this, Programmatic Weak Supervision (PWS) is used to mitigate migration bias. Migration bias is specific to this research, because a person sending a message in Flanders is not necessarily Flemish, but the residence can be travel or work related. This bias occurs from location being a self-reported string.  
+Migration bias is specific to this research, because a person sending a message in Flanders is not necessarily Flemish, but the residence can be travel or work related. This bias occurs from location being a self-reported string. In order to investigate this bias, the modal tweet method is used. The location history of a set of 442 users is extracted and examined. These users are then categorized in 5 different types: students, commuters, beach-visitors, foreigners and non-classified. The following code retrieves the location history of a given user and divides the years 2014-2018 into 20 different pieces, with time intervals of 3 months
+
+from datetime import datetime
+dl = DataLoader(bearer_token)   
+
+#Retrieve around 200 tweets, 100 on 2020/01/01 and 100 on 2020/01/02, written in English
+tweet_list = dl.retrieve_tweet(start_list=['2014-01-01T00:00:00.000Z','2014-02-01T00:00:00.000Z',
+                                          '2014-03-01T00:00:00.000Z','2014-04-01T00:00:00.000Z',
+                                          '2014-05-01T00:00:00.000Z','2014-06-01T00:00:00.000Z',
+                                          '2014-07-01T00:00:00.000Z','2014-08-01T00:00:00.000Z',
+                                          '2014-09-01T00:00:00.000Z','2014-10-01T00:00:00.000Z',
+                                          '2014-11-01T00:00:00.000Z','2014-12-01T00:00:00.000Z',
+                                           
+                                          '2015-01-01T00:00:00.000Z','2015-02-01T00:00:00.000Z',
+                                          '2015-03-01T00:00:00.000Z','2015-04-01T00:00:00.000Z',
+                                          '2015-05-01T00:00:00.000Z','2015-06-01T00:00:00.000Z',
+                                          '2015-07-01T00:00:00.000Z','2015-08-01T00:00:00.000Z',
+                                          '2015-09-01T00:00:00.000Z','2015-10-01T00:00:00.000Z',
+                                          '2015-11-01T00:00:00.000Z','2015-12-01T00:00:00.000Z',
+                                           
+                                          '2016-01-01T00:00:00.000Z','2016-02-01T00:00:00.000Z',
+                                          '2016-03-01T00:00:00.000Z','2016-04-01T00:00:00.000Z',
+                                          '2016-05-01T00:00:00.000Z','2016-06-01T00:00:00.000Z',
+                                          '2016-07-01T00:00:00.000Z','2016-08-01T00:00:00.000Z',
+                                          '2016-09-01T00:00:00.000Z','2016-10-01T00:00:00.000Z',
+                                          '2016-11-01T00:00:00.000Z','2016-12-01T00:00:00.000Z',
+                                           
+                                          '2017-01-01T00:00:00.000Z','2017-02-01T00:00:00.000Z',
+                                          '2017-03-01T00:00:00.000Z','2017-04-01T00:00:00.000Z',
+                                          '2017-05-01T00:00:00.000Z','2017-06-01T00:00:00.000Z',
+                                          '2017-07-01T00:00:00.000Z','2017-08-01T00:00:00.000Z',
+                                          '2017-09-01T00:00:00.000Z','2017-10-01T00:00:00.000Z',
+                                          '2017-11-01T00:00:00.000Z','2017-12-01T00:00:00.000Z',
+                                          '2018-01-01T00:00:00.000Z','2018-02-01T00:00:00.000Z',
+                                          '2018-03-01T00:00:00.000Z','2018-04-01T00:00:00.000Z',
+                                          '2018-05-01T00:00:00.000Z','2018-06-01T00:00:00.000Z',
+                                          '2018-07-01T00:00:00.000Z','2018-08-01T00:00:00.000Z',
+                                          '2018-09-01T00:00:00.000Z','2018-10-01T00:00:00.000Z',
+                                          '2018-11-01T00:00:00.000Z','2018-12-01T00:00:00.000Z'],
+                               
+                               end_list=['2014-01-31T00:00:00.000Z','2014-02-28T00:00:00.000Z',
+                                        '2014-03-31T00:00:00.000Z','2014-04-30T00:00:00.000Z',
+                                        '2014-05-31T00:00:00.000Z','2014-06-30T00:00:00.000Z',
+                                        '2014-07-31T00:00:00.000Z','2014-08-31T00:00:00.000Z',
+                                        '2014-09-30T00:00:00.000Z','2014-10-31T00:00:00.000Z',
+                                        '2014-11-30T00:00:00.000Z','2014-12-31T00:00:00.000Z',
+                                        
+                                        '2015-01-31T00:00:00.000Z','2015-02-28T00:00:00.000Z',
+                                        '2015-03-31T00:00:00.000Z','2015-04-30T00:00:00.000Z',
+                                        '2015-05-31T00:00:00.000Z','2015-06-30T00:00:00.000Z',
+                                        '2015-07-31T00:00:00.000Z','2015-08-31T00:00:00.000Z',
+                                        '2015-09-30T00:00:00.000Z','2015-10-31T00:00:00.000Z',
+                                        '2015-11-30T00:00:00.000Z','2015-12-31T00:00:00.000Z',
+                                        '2016-01-31T00:00:00.000Z','2016-02-29T00:00:00.000Z',
+                                        '2016-03-31T00:00:00.000Z','2016-04-30T00:00:00.000Z',
+                                        '2016-05-31T00:00:00.000Z','2016-06-30T00:00:00.000Z',
+                                        '2016-07-31T00:00:00.000Z','2016-08-31T00:00:00.000Z',
+                                        '2016-09-30T00:00:00.000Z','2016-10-31T00:00:00.000Z',
+                                        '2016-11-30T00:00:00.000Z','2016-12-31T00:00:00.000Z',
+                                        
+                                        '2017-01-31T00:00:00.000Z','2017-02-28T00:00:00.000Z',
+                                        '2017-03-31T00:00:00.000Z','2017-04-30T00:00:00.000Z',
+                                        '2017-05-31T00:00:00.000Z','2017-06-30T00:00:00.000Z',
+                                        '2017-07-31T00:00:00.000Z','2017-08-31T00:00:00.000Z',
+                                        '2017-09-30T00:00:00.000Z','2017-10-31T00:00:00.000Z',
+                                        '2017-11-30T00:00:00.000Z','2017-12-31T00:00:00.000Z',
+                                        
+                                        '2018-01-31T00:00:00.000Z','2018-02-28T00:00:00.000Z',
+                                        '2018-03-31T00:00:00.000Z','2018-04-30T00:00:00.000Z',
+                                        '2018-05-31T00:00:00.000Z','2018-06-30T00:00:00.000Z',
+                                        '2018-07-31T00:00:00.000Z','2018-08-31T00:00:00.000Z',
+                                        '2018-09-30T00:00:00.000Z','2018-10-31T00:00:00.000Z',
+                                        '2018-11-30T00:00:00.000Z','2018-12-31T00:00:00.000Z'],
+                                         keyword= "has:geo lang:nl from: 5799162",
+                               tweet_per_period=10)
+                               
+#Convert the Twitter json output to csv  and save files                             
+tweet, user = dl.to_dataframe(tweet_list)
+geo_info = pd.DataFrame({"datum" : tweet["created_at"], "plaats": tweet["location_geo"]})
+data_lijst = geo_info["datum"].tolist()
+plaats_lijst = geo_info["plaats"].tolist()
+res = [[] for i in range(1,21)]
+for i in range(0,len(data_lijst)):
+        d = data_lijst[i]
+        jaar = d.year - 2010
+        maand = d.month
+        ip = (maand - 1)//3 + 1
+        p = 4*jaar - 15 
+        kolom = p + ip - 2
+        res[kolom].append(plaats_lijst[i])
+        for i in range(0,20):
+    res[i].sort()
+    loc_lijst = list(set(res[i]))
+    extra = [(l,res[i].count(l)) for l in loc_lijst]
+    extra.sort(key = lambda x: x[1])
+    res[i].extend(extra)
+        
+g = max(len(res[i]) for i in range(0,20))
+for i in range(0,20):  
+    laatste = len(res[i])
+    v = g - len(res[i])
+    for j in range(0,v): 
+        res[i].append(" ") 
+    res[i].append("FINAL")
+    res[i].append(res[i][laatste-1][0].upper())
+    
+iks = {"periode 1" : res[0],
+       "periode 2" : res[1],
+       "periode 3" : res[2],
+       "periode 4" : res[3],
+       "periode 5" : res[4],
+       "periode 6" : res[5],
+       "periode 7" : res[6],
+       "periode 8" : res[7],
+       "periode 9" : res[8],
+       "periode 10" : res[9],
+       "periode 11" : res[10],
+       "periode 12" : res[11],
+       "periode 13" : res[12],
+       "periode 14" : res[13],
+       "periode 15" : res[14],
+       "periode 16" : res[15],
+       "periode 17" : res[16],
+       "periode 18" : res[17],
+       "periode 19" : res[18],
+       "periode 20" : res[19]
+      }
+
+    
+migration_info = pd.DataFrame(iks) 
+    
+tweet.to_csv('C:\\Users\\nadeg\\OneDrive\\Documenten\\uitvoerbestanden\\tweet_output_path.csv')
+user.to_csv('C:\\Users\\nadeg\\OneDrive\\Documenten\\uitvoerbestanden\\user_output_path.csv')
+migration_info.to_csv('C:\\Users\\nadeg\\OneDrive\\Documenten\\uitvoerbestanden\\migration_output_path.csv')
+```
