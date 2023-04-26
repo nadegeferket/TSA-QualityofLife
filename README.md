@@ -62,7 +62,7 @@ batch_predict(lijst)
 ## Subjective Well-Being
 Once the classification is done, QoL needs to be substracted from these findings. For this we follow the multiple papers Iacus wrote about QoL. His code, however, is in R rather than Python as the rest of the research is. Therefore, notebooks are created based on the research of Iacus. 
 
-#All sentiments of one region and domain is being merged and used in a calculation in order to derive the SWB index, for example, for the region Antwerp and the subdomain Emotional well-being:
+All sentiments of one region and domain is being merged and used in a calculation in order to derive the SWB index, for example, for the region Antwerp and the subdomain Emotional well-being:
 ```python
 import pandas as pd
 
