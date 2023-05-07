@@ -41,7 +41,7 @@ for i in tqdm(range(0,len(steden_per_provincie))):
 
 ```
 ## Twitter sentiment classifier
-For the classification of the sentiment the collected tweets are containing, the 'vlaams-twitter-sentiment-model' of Statistics Flanders is used. Small steps of pre-processing of the Tweets are added in order to eliminate errors in the process. 
+For the classification of the sentiment the collected tweets are containing, the 'vlaams-twitter-sentiment-model' of Statistics Flanders is used (link to their Github: https://github.com/vsa-datascience/vlaams-twitter-sentiment-model). Small steps of pre-processing of the Tweets are added in order to eliminate errors in the process. 
 ```python
 
 from twitter_sentiment_classifier import batch_predict
@@ -51,7 +51,7 @@ data = pandas.read_csv('Downloads\\tweet_per_provincie_welvarendOost_Vlaanderen.
 texts = data['text']
 lijst = list(texts)
 for i in range(0,len(texts)):
-    #preprocessing stap: vervangen van einde lijn naar spatie
+    #preprocessing stap: errors elimineren
     lijst[i] = lijst[i].replace("\n"," ")
     lijst[i] = lijst[i].replace("\t"," ")
     lijst[i] = lijst[i].replace("\r"," ")
