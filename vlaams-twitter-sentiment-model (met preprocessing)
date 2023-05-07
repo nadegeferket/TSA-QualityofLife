@@ -40,7 +40,7 @@
     "texts = data['text']\n",
     "lijst = list(texts)\n",
     "for i in range(0,len(texts)):\n",
-    "    #preprocessing stap: vervangen van einde lijn naar spatie\n",
+    "    #preprocessing stap: errors elimineren\n",
     "    lijst[i] = lijst[i].replace(\"\\n\",\" \")\n",
     "    lijst[i] = lijst[i].replace(\"\\t\",\" \")\n",
     "    lijst[i] = lijst[i].replace(\"\\r\",\" \")\n",
