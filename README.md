@@ -1,7 +1,7 @@
 # Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data
 In this repository, the code implementation can be found of the KU Leuven Master's Thesis "Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data", written by Sarah Vranken and Nadège Ferket in the academic year 2022-2023, and under the supervision of Manon Reusens and Prof. Dr. Bart Baesens. The project was conducted in partnership with Statistics Flanders, represented by Dr. Michael Reusens. This dissertation investigates the use of social media data - Twitter data in particular - as a proxy and/or complement to survey data. Twitter data, based on Quality of life, is held next to a survey examining the Quality of Life of the Flemish population. Quality of life is divided in three domains and eight subdomains. 
 ## Data collection 
-The following code snippet allows you to collect your own dataset per region and year using the Full-Archive Search API of Twitter. For each subdomain, 10-15 keywords are defined in order to collect enough and accurate tweets for our research. 
+The following code snippet allows you to collect your own dataset per region and year using the Full-Archive Search API of Twitter. For each subdomain, 10-15 keywords are defined in order to collect enough and accurate tweets for our research. The code for this is inspired by https://github.com/jtonglet/Demographics-PWS/blob/main/utils/data_collection.py
 ```python
 
 import pandas
