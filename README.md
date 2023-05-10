@@ -1,7 +1,7 @@
 # Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data
 In this repository, the code implementation can be found of the KU Leuven Master's Thesis "Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data", written by Sarah Vranken and Nadège Ferket in the academic year 2022-2023, and under the supervision of Manon Reusens and Prof. Dr. Bart Baesens. The project was conducted in partnership with Statistics Flanders, represented by Dr. Michael Reusens. This dissertation investigates the use of social media data - Twitter data in particular - as a proxy and/or complement to survey data. Twitter data, containing perceptions on Quality of Life, is held next to multiple surveys examining the Quality of Life of the Flemish population. Quality of Life (QoL) is divided into three domains: personal well-being, social well-being, and well-being at work, which are further split up into eight specific subdomains. 
 
-![image](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/1451263d-e595-4fe2-b298-de690c77afa3)
+![image](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/35cadd58-2639-4209-8255-f36aea3d8488)
 
 Each year, multiple surveys are sent out to Flemish citizens in order to measure perspectives on their Quality of Life. However, drawing results solely from these surveys may give limited insights compared to the conclusions that can be made when combining this data source with social media data. By giving insights into the usage of social media data to capture citizens’ perceptions about their life, official statistics can be complemented with this found data source. This is a pressing matter because of the declining response rate, time intensity, and both response burden and bias of surveys. Furthermore, social media is able to provide perceptions unobtainable from survey data, like monitoring changes in the public opinion, indicating issue salience or capturing respondents for rare events. 
 
@@ -118,13 +118,16 @@ SWBI= percentpos/(percentpos+percentneg)
 Selection bias occurs when the data used to make conclusions is not chosen randomly, leading to distortion in the data. Selection bias, also referred to as topic bias,
 includes selection-on-outcome bias, negativity bias, and keyword bias. [Selection-on-outcome-bias](https://dl.acm.org/doi/10.1145/3185048) occurs because people discussing a rare event are more likely to discuss event-related topics beforehand and in this way can self-select themselves into the panel. [Negativity bias](https://www.tandfonline.com/doi/full/10.1080/19331681.2015.1100225) stems from people putting more emphasis on negative events. Keyword bias is a new type of bias introduced in QoL research by this paper. The use of keywords in conducting Twitter research to gauge Subjective Well-Being may lead to bias if there is an increase in positively perceived keywords. For the case study of Flanders, the effect of a change of keywords in the most negatively preceived QoL domains is investigated. One of those domains accepted the null hypothesis of the Wilcoxon signed rank test afterwards, indicating that the results from Twitter data reflect the SCV survey results. This domain underwent a significant change in SWB from addapting four keywords, which proves the importance of keyword selection.
 
-<img src="https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/abd254fd-a79d-4c19-a93d-227a14ca216c" width="350" height="350">
+<img src="https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/abd254fd-a79d-4c19-a93d-227a14ca216c" width="400" height="300">
 
 
 
 
 ## Sampling bias
 Sampling bias occurs when the sample of data used to make conclusions is not representative of the entire population. The Twitter user’s characteristics cannot be assumed to match the population’s characteristics, inferring demographic bias. In the case study of Flanders, post-stratification is carried out by reweighting the Twitter corpus to the underlying tweeting population. By normalizing the SWB results by [the Odds ratio](https://link.springer.com/article/10.1007/s10708-018-9960-6) (Zivanovic et al., 2020), more robust SWB results are obtained. In this research, demographic bias is applied to location, but the same mitigation technique can be used for age, gender, or other demographic variables.
+
+![image](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/78902fa2-a866-4bca-bff6-047bbfcb381b)
+
 
 
 ## Migration Bias
