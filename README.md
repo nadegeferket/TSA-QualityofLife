@@ -1,5 +1,5 @@
 # Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data
-In this repository, the code implementation can be found of the KU Leuven Master's Thesis "Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data", written by Sarah Vranken and Nadège Ferket in the academic year 2022-2023, and under the supervision of Manon Reusens and Prof. Dr. Bart Baesens. The project was conducted in partnership with Statistics Flanders, represented by Dr. Michael Reusens. This dissertation investigates the use of social media data - Twitter data in particular - as a proxy and/or complement to survey data. Twitter data, containing perceptions on Quality of life, is held next to multiple surveys examining the Quality of Life of the Flemish population. Quality of life is divided in three domains and eight subdomains. 
+In this repository, the code implementation can be found of the KU Leuven Master's Thesis "Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data", written by Sarah Vranken and Nadège Ferket in the academic year 2022-2023, and under the supervision of Manon Reusens and Prof. Dr. Bart Baesens. The project was conducted in partnership with Statistics Flanders, represented by Dr. Michael Reusens. This dissertation investigates the use of social media data - Twitter data in particular - as a proxy and/or complement to survey data. Twitter data, containing perceptions on Quality of life (QoL), is held next to multiple surveys examining the Quality of Life of the Flemish population. Quality of life is divided into three domains: personal well-being, social well-being, and well-being at work, which are further split up into eight specific subdomains. 
 
 Each year, multiple surveys are sent out to Flemish citizens in order to measure
 perspectives on their Quality of Life. However, drawing results solely from
@@ -48,7 +48,7 @@ for i in tqdm(range(0,len(steden_per_provincie))):
 
 ```
 ## Twitter sentiment classifier
-For the classification of the sentiment the collected tweets are containing, the 'vlaams-twitter-sentiment-model' of Statistics Flanders is used (link to their Github: https://github.com/vsa-datascience/vlaams-twitter-sentiment-model). Small steps of pre-processing of the Tweets are added in order to eliminate errors in the process. 
+For the classification of the sentiment the collected tweets are containing, [the 'vlaams-twitter-sentiment-model'](https://github.com/vsa-datascience/vlaams-twitter-sentiment-model) of Statistics Flanders is used. Small steps of pre-processing are added in order to eliminate errors in the process. 
 ```python
 
 from twitter_sentiment_classifier import batch_predict
@@ -67,7 +67,7 @@ batch_predict(lijst)
 ```
 
 ## Subjective Well-Being
-Once the classification is done, QoL needs to be substracted from these findings. For this we follow the multiple papers Iacus wrote about QoL. His code, however, is in R rather than Python as the rest of the research is. Therefore, notebooks are created based on the Subjective Well-Being Index of Iacus et al. (2020) Controlling for Selection Bias in Social Media Indicatorsthrough Official Statistics: a Proposal. 
+Once the classification is done, QoL needs to be substracted from these findings. For this we follow the multiple papers Iacus wrote about QoL. His [code](https://github.com/siacus), however, is in R rather than Python as the rest of the research is. Therefore, notebooks are created based on [the Subjective Well-Being Index](https://sciendo.com/article/10.2478/jos-2020-0017) (Iacus et al., 2020)
 
 All sentiments of one region and domain is being merged and used in a calculation in order to derive the SWB index, for example, for the region Antwerp and the subdomain Emotional well-being:
 ```python
@@ -117,7 +117,10 @@ percentneg= neg/len(out)
 SWBI= percentpos/(percentpos+percentneg)
 ```
 ## Investigating migration bias
-Migration bias is specific to this research, because a person sending a message in Flanders is not necessarily Flemish, but the residence can be travel or work related. This bias occurs from location being a self-reported string. In order to investigate this bias, the modal tweet method is used, based on Armstrong et al. (2021) Challenges when identifying migration fromgeo-located Twitter data. The location history of a set of 442 users is extracted and examined. These users are then categorized in 5 different types: students, commuters, beach-visitors, foreigners and non-classified. The following code retrieves the location history of a given user and divides the years 2014-2018 into 20 different pieces, with time intervals of 3 months.
+Migration bias occurs because this research relies on geo-tagged tweets. The discussion can arise that a person sending a message present in a region in Flanders is not necessarily living in that region, but the residence is work or travel related instead. A proposal to mitigate this type of bias is given in this research: [the modal tweet method] (https://epjdatascience.springeropen.com/articles/10.1140/epjds/s13688-020-00254-7) (Armstrong et al.,2021). For the case study of Flanders, the location history of a set of 442 users is extracted and examined. These users are then categorized in 5 different types: students, commuters, beach-visitors, foreigners and non-classified. 
+![image](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/b1a6f2cf-79da-4d86-8e75-6b40b7348fea)
+
+The following code retrieves the location history of a given user and divides the years 2014-2018 into 20 different pieces, with time intervals of 3 months.
 ```python
 from datetime import datetime
 dl = DataLoader(bearer_token)   
