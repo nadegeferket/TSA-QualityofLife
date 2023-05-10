@@ -67,7 +67,7 @@ batch_predict(lijst)
 ## Subjective Well-Being
 Once the classification is done, these findings are used to formulate a Subjective Well-Being (SWB) measure. For this the multiple papers Iacus wrote about QoL are followed. His [code](https://github.com/siacus), however, is in R rather than Python as the rest of the research is. Therefore, notebooks are created based on [the Subjective Well-Being Index](https://sciendo.com/article/10.2478/jos-2020-0017) (Iacus et al., 2020).
 
-All sentiments of one region and domain is being merged and used in a calculation in order to derive the SWB index, for example, for the region Antwerp and the subdomain Emotional well-being:
+The sentiments over all keywords of a certain SWB domains are being merged for each subdomain in each region, in order to derive the SWB index. This is presented below for the region Antwerp and the subdomain Emotional well-being:
 ```python
 import pandas as pd
 
