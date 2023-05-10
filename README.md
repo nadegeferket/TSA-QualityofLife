@@ -118,7 +118,7 @@ SWBI= percentpos/(percentpos+percentneg)
 Selection bias occurs when the data used to make conclusions is not chosen randomly, leading to distortion in the data. Selection bias, also referred to as topic bias,
 includes selection-on-outcome bias, negativity bias, and keyword bias. [Selection-on-outcome-bias](https://dl.acm.org/doi/10.1145/3185048) occurs because people discussing a rare event are more likely to discuss event-related topics beforehand and in this way can self-select themselves into the panel. [Negativity bias](https://www.tandfonline.com/doi/full/10.1080/19331681.2015.1100225) stems from people putting more emphasis on negative events. Keyword bias is a new type of bias introduced in QoL research by this paper. The use of keywords in conducting Twitter research to gauge Subjective Well-Being may lead to bias if there is an increase in positively perceived keywords. For the case study of Flanders, the effect of a change of keywords in the most negatively preceived QoL domains is investigated. One of those domains accepted the null hypothesis of the Wilcoxon signed rank test afterwards, indicating that the results from Twitter data reflect the SCV survey results. This domain underwent a significant change in SWB from addapting four keywords, which proves the importance of keyword selection.
 
-![keyword bias picture](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/4e9ace24-e958-42c0-8706-633c04095691)
+![keyword bias picture](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/4e9ace24-e958-42c0-8706-633c04095691)){width=500px}
 
 
 ## Sampling bias
