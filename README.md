@@ -1,13 +1,8 @@
 # Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data
 In this repository, the code implementation can be found of the KU Leuven Master's Thesis "Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data", written by Sarah Vranken and Nadège Ferket in the academic year 2022-2023, and under the supervision of Manon Reusens and Prof. Dr. Bart Baesens. The project was conducted in partnership with Statistics Flanders, represented by Dr. Michael Reusens. This dissertation investigates the use of social media data - Twitter data in particular - as a proxy and/or complement to survey data. Twitter data, containing perceptions on Quality of life (QoL), is held next to multiple surveys examining the Quality of Life of the Flemish population. Quality of life is divided into three domains: personal well-being, social well-being, and well-being at work, which are further split up into eight specific subdomains. 
 
-Each year, multiple surveys are sent out to Flemish citizens in order to measure
-perspectives on their Quality of Life. However, drawing results solely from
-these surveys may give limited insights compared to the conclusions that can
-be made when combining this data source with social media data. By giving insights into the usage of social media data to capture citizens’ perceptions about their life, official statistics can be complemented with this found data source. This is a pressing matter because
-of the declining response rate, time intensity, and both response burden and
-bias of surveys. Furthermore, social media is able to provide perceptions unobtainable from survey data, like monitoring changes in the public opinion, indicating issue salience or capturing respondents for rare events. 
-## Data collection 
+Each year, multiple surveys are sent out to Flemish citizens in order to measure perspectives on their Quality of Life. However, drawing results solely from these surveys may give limited insights compared to the conclusions that can be made when combining this data source with social media data. By giving insights into the usage of social media data to capture citizens’ perceptions about their life, official statistics can be complemented with this found data source. This is a pressing matter because of the declining response rate, time intensity, and both response burden and bias of surveys. Furthermore, social media is able to provide perceptions unobtainable from survey data, like monitoring changes in the public opinion, indicating issue salience or capturing respondents for rare events. 
+## Data Collection 
 The following code snippet allows you to collect your own dataset per region and year using the Full-Archive Search API of Twitter. A bearer token provided by [Twitter](https://developer.twitter.com/en/products/twitter-api/academic-research) is needed in order to run the code below. More details on the code can be found on [this article](https://towardsdatascience.com/an-extensive-guide-to-collecting-tweets-from-twitter-api-v2-for-academic-research-using-python-3-518fcb71df2a), which provides an extensive step-by-step process for collecting Tweets. For each QoL subdomain, 10-15 keywords are defined in order to collect enough and accurate tweets for this research. These dictionaries are manually formultaed, based on a [QoL study](https://www.who.int/tools/whoqol/whoqol-100/docs/default-source/publishing-policies/whoqol/dutch-netherlands-whoqol-100) by the World Health Organization.
 ```python
 
@@ -47,7 +42,7 @@ for i in tqdm(range(0,len(steden_per_provincie))):
     rslt_df.to_csv("tweet_per_provincie_" + provincieNamen[i] + "famleden" + ".csv")
 
 ```
-## Twitter sentiment classifier
+## Data Classification
 For the classification of the sentiment the collected tweets are containing, [the 'vlaams-twitter-sentiment-model'](https://github.com/vsa-datascience/vlaams-twitter-sentiment-model) of Statistics Flanders is used. Small steps of pre-processing are added in order to eliminate errors in the process. 
 ```python
 
@@ -116,11 +111,19 @@ percentneg= neg/len(out)
 
 SWBI= percentpos/(percentpos+percentneg)
 ```
-## Investigating migration bias
-Migration bias occurs because this research relies on geo-tagged tweets. The discussion can arise that a person sending a message present in a region in Flanders is not necessarily living in that region, but the residence is work or travel related instead. A proposal to mitigate this type of bias is given in this research: [the modal tweet method] (https://epjdatascience.springeropen.com/articles/10.1140/epjds/s13688-020-00254-7) (Armstrong et al.,2021). For the case study of Flanders, the location history of a set of 442 users is extracted and examined. These users are then categorized in 5 different types: students, commuters, beach-visitors, foreigners and non-classified. 
+## Selection Bias
+Selection bias occurs when the data used to make conclusions is not chosen randomly, leading to distortion in the data. Selection bias, also referred to as topic bias,
+includes selection-on-outcome bias, negativity bias, and keyword bias. [Selection-on-outcome-bias](https://dl.acm.org/doi/10.1145/3185048) occurs because people discussing a rare event are more likely to discuss event-related topics beforehand and in this way can self-select themselves into the panel. [Negativity bias](https://www.tandfonline.com/doi/full/10.1080/19331681.2015.1100225 stems from people putting more emphasis on negative events. Keyword bias is a new type of bias introduced in QoL research by this paper. The use of keywords in conducting Twitter research to gauge Subjective Well-Being may lead to bias if there is an increase in positively perceived keywords. For the case study of Flanders, the effect of a change of keywords in the most negatively preceived QoL domains is investigated. One of those domains accepted the null hypothesis of the Wilcoxon signed rank test afterwwards, indicating that the results from Twitter data reflect the SCV survey results. This domain underwent a significant change in SWB from addapting four keywords, which proves the importance of keyword selection.
+
+## Sampling bias
+Sampling bias occurs when the sample of data used to make conclusions is not representative of the entire population. The Twitter user’s characteristics cannot be assumed to match the population’s characteristics, inferring demographic bias. In the case study of Flanders, post-stratification is carried out by reweighting the Twitter corpus to the underlying tweeting population. By normalizing the SWB results by [the Odds ratio](https://link.springer.com/article/10.1007/s10708-018-9960-6) (Zivanovic et al., 2020), more robust SWB results are obtained. In this research, demographic bias is applied to location, but the same mitigation technique can be used for age, gender, or other demographic variables.
+
+
+## Migration Bias
+Migration bias occurs because this research relies on geo-tagged tweets. The discussion can arise that a person sending a message present in a region in Flanders is not necessarily living in that region, but the residence is work or travel related instead. A proposal to mitigate this type of bias is given in this research: [the modal tweet method] (https://epjdatascience.springeropen.com/articles/10.1140/epjds/s13688-020-00254-7) (Armstrong et al.,2021). For the case study of Flanders, the location history of a set of 442 users is extracted and examined. These users are then categorized in 5 different types:
 ![image](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/b1a6f2cf-79da-4d86-8e75-6b40b7348fea)
 
-The following code retrieves the location history of a given user and divides the years 2014-2018 into 20 different pieces, with time intervals of 3 months.
+The following code retrieves the location history of a given user and divides the years 2014-2018 into 20 different subsets, with time intervals of 3 months.
 ```python
 from datetime import datetime
 dl = DataLoader(bearer_token)   
