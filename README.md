@@ -246,3 +246,5 @@ user.to_csv('C:\\Users\\nadeg\\OneDrive\\Documenten\\uitvoerbestanden\\user_outp
 migration_info.to_csv('C:\\Users\\nadeg\\OneDrive\\Documenten\\uitvoerbestanden\\migration_output_path.csv')
 
 ```
+## Contact
+Nadège Ferket nadegeferket@hotmail.com ; Sarah Vranken vranken.sarah@hotmail.com
