@@ -131,7 +131,7 @@ Sampling bias occurs when the sample of data used to make conclusions is not rep
 
 
 ## Migration Bias
-Migration bias occurs because this research relies on geo-tagged tweets. The discussion can arise that a person sending a message present in a region in Flanders is not necessarily living in that region, but the residence is work or travel related instead. A proposal to mitigate this type of bias is given in this research: [the modal tweet method] (https://epjdatascience.springeropen.com/articles/10.1140/epjds/s13688-020-00254-7) (Armstrong et al.,2021). For the case study of Flanders, the location history of a set of 442 users is extracted and examined. These users are then categorized in 5 different types:
+Migration bias occurs because this research relies on geo-tagged tweets. The discussion can arise that a person sending a message present in a region in Flanders is not necessarily living in that region, but the residence is work or travel related instead. A proposal to mitigate this type of bias is given in this research: [the modal tweet method](https://epjdatascience.springeropen.com/articles/10.1140/epjds/s13688-020-00254-7) (Armstrong et al.,2021). For the case study of Flanders, the location history of a set of 442 users is extracted and examined. These users are then categorized in 5 different types:
 <img src="https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/b1a6f2cf-79da-4d86-8e75-6b40b7348fea" width="800">
 
 The following code retrieves the location history of a given user and divides the years 2014-2018 into 20 different subsets, with time intervals of 3 months.
