@@ -125,9 +125,8 @@ includes selection-on-outcome bias, negativity bias, and keyword bias. [Selectio
 
 ## Sampling bias
 Sampling bias occurs when the sample of data used to make conclusions is not representative of the entire population. The Twitter user’s characteristics cannot be assumed to match the population’s characteristics, inferring demographic bias. In the case study of Flanders, post-stratification is carried out by reweighting the Twitter corpus to the underlying tweeting population. By normalizing the SWB results by [the Odds ratio](https://link.springer.com/article/10.1007/s10708-018-9960-6) (Zivanovic et al., 2020), more robust SWB results are obtained. In this research, demographic bias is applied to location, but the same mitigation technique can be used for age, gender, or other demographic variables.
-![image](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/a58b1367-a6fe-4372-acf9-60a694984882)
 
-<img src= "https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/a58b1367-a6fe-4372-acf9-60a694984882" width="450" height="300">
+<img src= "https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/a58b1367-a6fe-4372-acf9-60a694984882" width="420" height="270">
 
 
 
