@@ -1,7 +1,7 @@
 # Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data
 In this repository, the code implementation can be found of the KU Leuven Master's Thesis "Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data", written by Sarah Vranken and Nadège Ferket in the academic year 2022-2023, and under the supervision of Manon Reusens and Prof. Dr. Bart Baesens. The project was conducted in partnership with Statistics Flanders, represented by Dr. Michael Reusens. This dissertation investigates the use of social media data - Twitter data in particular - as a proxy and/or complement to survey data. Twitter data, containing perceptions on Quality of Life, is held next to multiple surveys examining the Quality of Life of the Flemish population. Quality of Life (QoL) is divided into three domains: personal well-being, social well-being, and well-being at work, which are further split up into eight specific subdomains. 
+![image](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/b8a3e9e4-f4c8-4172-bcff-520d0fdc3d1e)
 
-![image](https://raw.githubusercontent.com/nadegeferket/TSA-QualityofLife/assets/.github/116740372/35cadd58-2639-4209-8255-f36aea3d8488)
 
 
 
@@ -134,8 +134,6 @@ Sampling bias occurs when the sample of data used to make conclusions is not rep
 
 ## Migration Bias
 Migration bias occurs because this research relies on geo-tagged tweets. The discussion can arise that a person sending a message present in a region in Flanders is not necessarily living in that region, but the residence is work or travel related instead. A proposal to mitigate this type of bias is given in this research: [the modal tweet method](https://epjdatascience.springeropen.com/articles/10.1140/epjds/s13688-020-00254-7) (Armstrong et al.,2021). For the case study of Flanders, the location history of a set of 442 users is extracted and examined. These users are then categorized in 5 different types:
-![migration bias](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/7df4b181-5852-4b27-bf56-af3855718caf)
-
 ![migration bias](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/41db9828-43f7-440e-8e6c-c09d50548f05)
 
 
