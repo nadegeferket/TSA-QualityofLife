@@ -54,11 +54,11 @@ For the classification of the sentiment the collected tweets are containing, [th
 from twitter_sentiment_classifier import batch_predict
 
 import pandas
-data = pandas.read_csv('Downloads\\tweet_per_provincie_welvarendOost_Vlaanderen.csv') #geef eigen doc in
+data = pandas.read_csv('Downloads\\tweet_per_provincie_welvarendOost_Vlaanderen.csv') #insert own document/csv-file
 texts = data['text']
 lijst = list(texts)
 for i in range(0,len(texts)):
-    #preprocessing stap: errors elimineren
+    #preprocessing step: eliminate errors
     lijst[i] = lijst[i].replace("\n"," ")
     lijst[i] = lijst[i].replace("\t"," ")
     lijst[i] = lijst[i].replace("\r"," ")
