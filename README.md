@@ -1,6 +1,7 @@
 # Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data
 In this repository, the code implementation can be found of the KU Leuven Master's Thesis "Quality of Life in Flanders: a Comparative Study Using Twitter and Survey Data", written by Sarah Vranken and Nadège Ferket in the academic year 2022-2023, and under the supervision of Manon Reusens and Prof. Dr. Bart Baesens. The project was conducted in partnership with Statistics Flanders, represented by Dr. Michael Reusens. This dissertation investigates the use of social media data - Twitter data in particular - as a proxy and/or complement to survey data. Twitter data, containing perceptions on Quality of Life, is held next to multiple surveys examining the Quality of Life of the Flemish population. Quality of Life (QoL) is divided into three domains: personal well-being, social well-being, and well-being at work, which are further split up into eight specific subdomains. 
-![image](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/b8a3e9e4-f4c8-4172-bcff-520d0fdc3d1e)
+![image](https://github.com/nadegeferket/TSA-QualityofLife/assets/116740372/2fe83546-a611-4486-87be-3bb1bf7ee45e)
+
 
 
 
